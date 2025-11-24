@@ -97,6 +97,18 @@ function initNetworkCanvas() {
 function initSkillAnimation() {
   const progressBars = document.querySelectorAll('.progress');
   if (progressBars.length === 0) return;
+  // Immediately set progress values on page load as a fallback so bars
+  // appear on devices that don't support hover/focus events (e.g. mobile).
+  progressBars.forEach(bar => {
+    const val = bar.getAttribute('data-value');
+    // Initialize the custom CSS property used to control the filled width.
+    bar.style.setProperty('--progress', val + '%');
+  });
+
+  // Define options for the IntersectionObserver to animate the bars when
+  // the skills section enters the viewport. The observer provides a smooth
+  // animation effect on larger screens, but isn't strictly necessary on
+  // touch devices, which will already have the widths set.
   const options = {
     threshold: 0.4
   };
@@ -107,12 +119,14 @@ function initSkillAnimation() {
           const val = bar.getAttribute('data-value');
           bar.style.setProperty('--progress', val + '%');
         });
-        // Only animate once
+        // Only animate once to improve performance
         observer.unobserve(entry.target);
       }
     });
   };
   const observer = new IntersectionObserver(animateBars, options);
   const skillsSection = document.getElementById('skills');
-  if (skillsSection) observer.observe(skillsSection);
+  if (skillsSection) {
+    observer.observe(skillsSection);
+  }
 }
