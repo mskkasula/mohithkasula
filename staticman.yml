@@ -1,0 +1,7 @@
+testimonials:
+  allowedFields: ["name", "role", "relationship", "message"]
+  requiredFields: ["name", "role", "relationship", "message"]
+  path: "data/testimonials"
+  filename: "testimonial-:uuid"
+  format: "json"
+  moderation: true
