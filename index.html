@@ -357,91 +357,99 @@
     <p class="interests-conclusion">These hobbies keep me calm, organised and connected. They also reflect my appreciation for clarity, respect and meaningful relationships — qualities I bring to my professional life.</p>
   </section>
 
-  
-  <!-- Testimonials Section -->
   <section id="testimonials" class="section testimonials-section">
-    <h2>Testimonials</h2>
-    <p class="section-intro">
-      I’d love to hear about your experience working with me. Your insights help others
-      understand how I collaborate and contribute. To keep the site safe and readable
-      for everyone, I review and lightly edit submissions for clarity before publishing.
-    </p>
-    <div class="testimonial-container">
-      <div class="testimonial-form">
-        <form
-          id="testimonial-form"
-          action="https://mohith-staticman-2cae1f6c39e1.herokuapp.com/v2/entry/github/mskkasula/mohithkasula/main/testimonials"
-          method="POST"
+  <h2>Testimonials</h2>
+  <p class="section-intro">
+    I’d love to hear about your experience working with me. Your insights help others understand how I collaborate and contribute. 
+    To keep the site safe and readable for everyone, I review and lightly edit submissions for clarity before publishing.
+  </p>
+
+  <div class="testimonial-container">
+    <!-- Left: Form -->
+    <div class="testimonial-form">
+      <form
+        id="testimonial-form"
+        action="https://mohith-staticman-2cae1f6c39e1.herokuapp.com/v3/entry/github/mskkasula/mohithkasula/main/testimonials"
+        method="POST"
+      >
+        <!-- Staticman options -->
+        <input type="hidden" name="options[slug]" value="testimonials">
+        <input
+          type="hidden"
+          name="options[redirect]"
+          value="https://mskkasula.github.io/mohithkasula/#testimonials"
         >
-          <!-- used in file naming / grouping if you ever need it -->
-          <input type="hidden" name="options[slug]" value="testimonials">
-        
-          <div class="form-group">
-            <label for="testimonial-name">Name</label>
-            <input
-              type="text"
-              id="testimonial-name"
-              name="fields[name]"
-              placeholder="Your full name"
-              required
-            >
-          </div>
-        
-          <div class="form-group">
-            <label for="testimonial-role">Current Role &amp; Organization</label>
-            <input
-              type="text"
-              id="testimonial-role"
-              name="fields[role]"
-              placeholder="e.g. Data Scientist at ABC Health"
-              required
-            >
-          </div>
-        
-          <div class="form-group">
-            <label for="testimonial-relationship">Relationship with Mohith and organization worked together</label>
-            <input
-              type="text"
-              id="testimonial-relationship"
-              name="fields[relationship]"
-              placeholder="e.g. Supervisor at XYZ Lab"
-              required
-            >
-          </div>
-        
-          <div class="form-group">
-            <label for="testimonial-message">Testimonial</label>
-            <textarea
-              id="testimonial-message"
-              name="fields[message]"
-              rows="4"
-              placeholder="Write your testimonial here…"
-              required
-            ></textarea>
-          </div>
-        
-          <div class="form-group consent-group">
-            <input
-              type="checkbox"
-              id="testimonial-consent"
-              name="fields[consent]"
-              value="yes"
-              required
-            >
-            <label for="testimonial-consent">I agree to have my testimonial published on this site.</label>
-          </div>
-        
-          <button type="submit" class="btn-primary">Submit Testimonial</button>
-        </form>
-      </div>
-  
-      <div class="testimonial-display">
-        <div class="testimonial-carousel" id="testimonial-carousel">
-          <!-- Testimonials will scroll here -->
+
+        <div class="form-group">
+          <label for="testimonial-name">Name</label>
+          <input
+            type="text"
+            id="testimonial-name"
+            name="fields[name]"
+            placeholder="Your full name"
+            required
+          >
         </div>
+
+        <div class="form-group">
+          <label for="testimonial-role">Current Role &amp; Organization</label>
+          <input
+            type="text"
+            id="testimonial-role"
+            name="fields[role]"
+            placeholder="e.g. Data Scientist at ABC Health"
+            required
+          >
+        </div>
+
+        <div class="form-group">
+          <label for="testimonial-relationship">Relationship with Mohith and organization worked together</label>
+          <input
+            type="text"
+            id="testimonial-relationship"
+            name="fields[relationship]"
+            placeholder="e.g. Supervisor at XYZ Lab"
+            required
+          >
+        </div>
+
+        <div class="form-group">
+          <label for="testimonial-message">Testimonial</label>
+          <textarea
+            id="testimonial-message"
+            name="fields[message]"
+            rows="4"
+            placeholder="Write your testimonial here…"
+            required
+          ></textarea>
+        </div>
+
+        <div class="form-group consent-group">
+          <input
+            type="checkbox"
+            id="testimonial-consent"
+            name="fields[consent]"
+            required
+          >
+          <label for="testimonial-consent">
+            I agree to have my testimonial published on this site.
+          </label>
+        </div>
+
+        <button type="submit" class="btn-primary">
+          Submit Testimonial
+        </button>
+      </form>
+    </div>
+
+    <!-- Right: Scrolling testimonials display -->
+    <div class="testimonial-display">
+      <div class="testimonial-carousel" id="testimonial-carousel">
+        <!-- Approved testimonials will be rendered here from JSON -->
       </div>
     </div>
-  </section>
+  </div>
+</section>
   
 
   <!-- Contact Section -->
