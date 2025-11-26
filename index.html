@@ -357,99 +357,88 @@
     <p class="interests-conclusion">These hobbies keep me calm, organised and connected. They also reflect my appreciation for clarity, respect and meaningful relationships — qualities I bring to my professional life.</p>
   </section>
 
-  <section id="testimonials" class="section testimonials-section">
-  <h2>Testimonials</h2>
-  <p class="section-intro">
-    I’d love to hear about your experience working with me. Your insights help others understand how I collaborate and contribute. 
-    To keep the site safe and readable for everyone, I review and lightly edit submissions for clarity before publishing.
+## Testimonials
+
+I’d love to hear about your experience working with me. Your insights help others understand how I collaborate and contribute. To keep the site safe and readable for everyone, I review and lightly edit submissions for clarity before publishing.
+
+<form
+  id="testimonial-form"
+  action="https://mohith-staticman-2cae1f6c39e1.herokuapp.com/v3/entry/github/mskkasula/mohithkasula/main/testimonials"
+  method="POST"
+>
+  <!-- Staticman options -->
+  <input type="hidden" name="options[slug]" value="testimonials">
+  <input
+    type="hidden"
+    name="options[redirect]"
+    value="https://mskkasula.github.io/mohithkasula/#testimonials"
+  >
+
+  <p>
+    <label for="testimonial-name"><strong>Name</strong></label><br>
+    <input
+      type="text"
+      id="testimonial-name"
+      name="fields[name]"
+      placeholder="Your full name"
+      required
+      style="width:100%;max-width:500px;"
+    >
   </p>
 
-  <div class="testimonial-container">
-    <!-- Left: Form -->
-    <div class="testimonial-form">
-      <form
-        id="testimonial-form"
-        action="https://mohith-staticman-2cae1f6c39e1.herokuapp.com/v3/entry/github/mskkasula/mohithkasula/main/testimonials"
-        method="POST"
+  <p>
+    <label for="testimonial-role"><strong>Current Role &amp; Organization</strong></label><br>
+    <input
+      type="text"
+      id="testimonial-role"
+      name="fields[role]"
+      placeholder="e.g. Data Scientist at ABC Health"
+      required
+      style="width:100%;max-width:500px;"
+    >
+  </p>
+
+  <p>
+    <label for="testimonial-relationship"><strong>Relationship with Mohith and organization worked together</strong></label><br>
+    <input
+      type="text"
+      id="testimonial-relationship"
+      name="fields[relationship]"
+      placeholder="e.g. Supervisor at XYZ Lab"
+      required
+      style="width:100%;max-width:500px;"
+    >
+  </p>
+
+  <p>
+    <label for="testimonial-message"><strong>Testimonial</strong></label><br>
+    <textarea
+      id="testimonial-message"
+      name="fields[message]"
+      rows="4"
+      placeholder="Write your testimonial here…"
+      required
+      style="width:100%;max-width:500px;"
+    ></textarea>
+  </p>
+
+  <p>
+    <label>
+      <input
+        type="checkbox"
+        id="testimonial-consent"
+        name="fields[consent]"
+        required
       >
-        <!-- Staticman options -->
-        <input type="hidden" name="options[slug]" value="testimonials">
-        <input
-          type="hidden"
-          name="options[redirect]"
-          value="https://mskkasula.github.io/mohithkasula/#testimonials"
-        >
+      I agree to have my testimonial published on this site.
+    </label>
+  </p>
 
-        <div class="form-group">
-          <label for="testimonial-name">Name</label>
-          <input
-            type="text"
-            id="testimonial-name"
-            name="fields[name]"
-            placeholder="Your full name"
-            required
-          >
-        </div>
+  <p>
+    <button type="submit">Submit Testimonial</button>
+  </p>
+</form>
 
-        <div class="form-group">
-          <label for="testimonial-role">Current Role &amp; Organization</label>
-          <input
-            type="text"
-            id="testimonial-role"
-            name="fields[role]"
-            placeholder="e.g. Data Scientist at ABC Health"
-            required
-          >
-        </div>
-
-        <div class="form-group">
-          <label for="testimonial-relationship">Relationship with Mohith and organization worked together</label>
-          <input
-            type="text"
-            id="testimonial-relationship"
-            name="fields[relationship]"
-            placeholder="e.g. Supervisor at XYZ Lab"
-            required
-          >
-        </div>
-
-        <div class="form-group">
-          <label for="testimonial-message">Testimonial</label>
-          <textarea
-            id="testimonial-message"
-            name="fields[message]"
-            rows="4"
-            placeholder="Write your testimonial here…"
-            required
-          ></textarea>
-        </div>
-
-        <div class="form-group consent-group">
-          <input
-            type="checkbox"
-            id="testimonial-consent"
-            name="fields[consent]"
-            required
-          >
-          <label for="testimonial-consent">
-            I agree to have my testimonial published on this site.
-          </label>
-        </div>
-
-        <button type="submit" class="btn-primary">
-          Submit Testimonial
-        </button>
-      </form>
-    </div>
-
-    <!-- Right: Scrolling testimonials display -->
-    <div class="testimonial-display">
-      <div class="testimonial-carousel" id="testimonial-carousel">
-        <!-- Approved testimonials will be rendered here from JSON -->
-      </div>
-    </div>
-  </div>
-</section>
   
 
   <!-- Contact Section -->
