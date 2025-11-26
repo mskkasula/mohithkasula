@@ -7,7 +7,6 @@
 document.addEventListener('DOMContentLoaded', () => {
   initNetworkCanvas();
   initSkillAnimation();
-  initTestimonials();
 });
 
 /**
@@ -130,86 +129,4 @@ function initSkillAnimation() {
   if (skillsSection) {
     observer.observe(skillsSection);
   }
-}
-
-/**
- * Initializes the testimonial form and displays existing testimonials in a
- * scrolling carousel. New submissions are stored in localStorage and are
- * not displayed automatically; they require manual moderation before being
- * added to the visible list. This prevents unmoderated content from
- * appearing publicly.
- */
-function initTestimonials() {
-  const carousel = document.getElementById('testimonial-carousel');
-  const form = document.getElementById('testimonial-form');
-  if (!carousel || !form) return;
-
-  // Predefined testimonials; start empty. Approved testimonials can be added here
-  const testimonials = [];
-
-  // Render testimonials into the carousel
-  function renderTestimonials() {
-    carousel.innerHTML = '';
-    testimonials.forEach(t => {
-      const div = document.createElement('div');
-      div.className = 'testimonial-item';
-      div.innerHTML = `
-        <h4>${t.name}</h4>
-        <p class="role">${t.role}</p>
-        <p class="relationship">${t.relationship}</p>
-        <p>${t.message}</p>
-      `;
-      carousel.appendChild(div);
-    });
-    // Duplicate testimonials to create continuous scrolling effect
-    testimonials.forEach(t => {
-      const div = document.createElement('div');
-      div.className = 'testimonial-item';
-      div.innerHTML = `
-        <h4>${t.name}</h4>
-        <p class="role">${t.role}</p>
-        <p class="relationship">${t.relationship}</p>
-        <p>${t.message}</p>
-      `;
-      carousel.appendChild(div);
-    });
-  }
-  renderTestimonials();
-
-  // Ensure the testimonial display matches the height of the form to avoid excess blank space.
-  function adjustTestimonialHeight() {
-    const formWrapper = document.querySelector('.testimonial-form');
-    const displayWrapper = document.querySelector('.testimonial-display');
-    if (formWrapper && displayWrapper) {
-      const formHeight = formWrapper.offsetHeight;
-      displayWrapper.style.maxHeight = formHeight + 'px';
-    }
-  }
-  // Adjust on load and resize
-  adjustTestimonialHeight();
-  window.addEventListener('resize', adjustTestimonialHeight);
-
-  // Handle form submission
-  form.addEventListener('submit', e => {
-    e.preventDefault();
-    const name = document.getElementById('testimonial-name').value.trim();
-    const role = document.getElementById('testimonial-role').value.trim();
-    const relationship = document.getElementById('testimonial-relationship').value.trim();
-    const message = document.getElementById('testimonial-message').value.trim();
-    const consent = document.getElementById('testimonial-consent').checked;
-    if (!consent) {
-      alert('Please provide consent to publish your testimonial.');
-      return;
-    }
-    if (name && role && relationship && message) {
-      // Save to localStorage for moderation. We prefix with a key to avoid collision.
-      const pending = JSON.parse(localStorage.getItem('pendingTestimonials') || '[]');
-      pending.push({ name, role, relationship, message, date: new Date().toISOString() });
-      localStorage.setItem('pendingTestimonials', JSON.stringify(pending));
-      form.reset();
-      alert(
-        'Thank you for your submission! Your testimonial has been saved and will be reviewed before it appears on the site.'
-      );
-    }
-  });
 }
