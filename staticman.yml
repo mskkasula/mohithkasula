@@ -1,7 +1,16 @@
 testimonials:
-  allowedFields: ["name", "role", "relationship", "message"]
-  requiredFields: ["name", "role", "relationship", "message"]
-  path: "data/testimonials"
-  filename: "testimonial-:year:month:day-:hour:minute:second"
+  branch: "main"                     # your repo default branch
   format: "json"
-  moderation: true
+  path: "data/testimonials"
+  filename: "testimonial-{timestamp}"
+  moderation: true                   # create PRs for you to approve
+  commitMessage: "Add testimonial from {fields.name}"
+
+  allowedFields: ["name", "role", "relationship", "message", "consent"]
+  requiredFields: ["name", "role", "relationship", "message", "consent"]
+
+  generatedFields:
+    date:
+      type: date
+      options:
+        format: iso8601
